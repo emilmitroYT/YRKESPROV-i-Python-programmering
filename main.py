@@ -1,4 +1,7 @@
 from allimports import *
+
+
+
 # Load the emotion classifier
 classifier = cv2.ml.SVM_load("haarcascade_frontalface_default.xml")
 
@@ -13,7 +16,7 @@ while True:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # Detect faces in the frame
-    faces = cv2.CascadeClassifier("haarcascade_frontalface_default.xml").detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+    faces = cv2.CascadeClassifier(classifier).detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 
     # Loop over the detected faces
     for (x, y, w, h) in faces:
